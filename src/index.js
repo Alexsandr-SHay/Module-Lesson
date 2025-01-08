@@ -1,5 +1,5 @@
-import one from "./modules/one";
-import two from "./modules/two";
+import timer from "./modules/timer";
+//import two from "./modules/two";
 
-one();
-two();
+timer("27 febrary 2025");
+//two();
