@@ -1,7 +1,8 @@
-const one = (deadline) => {
+const timer = (deadline) => {
   const timerHourse = document.querySelector("#timer-hours");
   const timerMinutes = document.querySelector("#timer-minutes");
   const timerSeconds = document.querySelector("#timer-seconds");
+  let idInterval;
 
   const getTimeRemaning = () => {
     let dateStop = new Date(deadline).getTime();
@@ -17,13 +18,16 @@ const one = (deadline) => {
   const updateClock = () => {
     let getTime = getTimeRemaning();
 
-    timerHourse.textContent = getTime.hours;
-    timerMinutes.textContent = getTime.minutes;
-    timerSeconds.textContent = getTime.seconds;
-
-    if (getTime.timeRemaning > 0) setTimeout(updateClock, 1000);
+    if (getTime.timeRemaning > 0) {
+      timerHourse.textContent = getTime.hours.toString().padStart(2, "0");
+      timerMinutes.textContent = getTime.minutes.toString().padStart(2, "0");
+      timerSeconds.textContent = getTime.seconds.toString().padStart(2, "0");
+    } else {
+      console.log("Остановите");
+      clearInterval(idInterval);
+    }
   };
-  updateClock();
+  idInterval = setInterval(updateClock, 1000);
 };
 
-export default one;
+export default timer;
