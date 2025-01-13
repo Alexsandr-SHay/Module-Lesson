@@ -4,10 +4,6 @@ const dataEntryForm = () => {
   const formEmail = document.querySelectorAll(".form-email");
   const formPhone = document.querySelectorAll(".form-phone");
 
-  console.log(formName);
-  console.log(formEmail);
-  console.log(formPhone);
-
   for (let i = 1; i < calcItem.length; i++) {
     calcItem[i].addEventListener("input", (event) => {
       event.target.value = event.target.value.replace(/\D+/, "");
@@ -18,11 +14,22 @@ const dataEntryForm = () => {
     e.addEventListener("input", (event) => {
       event.target.value = event.target.value.replace(/[^А-Яа-я- ]/, "");
     });
+
+    e.addEventListener("blur", (event) => {
+      event.target.value = editingLine(event.target.value);
+      event.target.value = event.target.value
+        .toLowerCase()
+        .replace(/(?<!\p{Lowercase})\p{Lowercase}/gu, (ch) => ch.toUpperCase());
+    });
   });
 
   formEmail.forEach((e) => {
     e.addEventListener("input", (event) => {
       event.target.value = event.target.value.replace(/[^A-Za-z@_.!~*'-]/, "");
+    });
+
+    e.addEventListener("blur", (event) => {
+      event.target.value = editingLine(event.target.value);
     });
   });
 
@@ -30,13 +37,19 @@ const dataEntryForm = () => {
     e.addEventListener("input", (event) => {
       event.target.value = event.target.value.replace(/[^0-9()+-]/, "");
     });
+
+    e.addEventListener("blur", (event) => {
+      event.target.value = editingLine(event.target.value);
+    });
   });
 
-  // buttons.forEach((btn) => {
-  //   btn.addEventListener("click", () => {
-  //     animatuonElement();
-  //   });
-  // });
+  const editingLine = (value) => {
+    value = value.replace(/^[\s\-]+/g, "");
+    value = value.replace(/[\s\-]+$/g, "");
+    value = value.replace(/\s{2,}/g, " ");
+    value = value.replace(/\-{2,}/g, "-");
+    return value;
+  };
 };
 
 export default dataEntryForm;
