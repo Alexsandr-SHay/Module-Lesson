@@ -1,7 +1,6 @@
 const modal = () => {
   const modal = document.querySelector(".popup");
   const buttons = document.querySelectorAll(".popup-btn");
-  const closeBtn = modal.querySelector(".popup-close");
   const inputElement = document.querySelector(".popup-content");
 
   let screenWidth = document.documentElement.clientWidth;
@@ -18,14 +17,10 @@ const modal = () => {
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
   const animation = () => {
     if (parseFloat(inputElement.style.left) < screenWidth / 2 - 200) {
       requestId = requestAnimationFrame(() => {
-        valueElement = parseFloat(valueElement) + 8 + "px";
+        valueElement = parseFloat(valueElement) + 25 + "px";
         inputElement.style.left = valueElement;
         animation();
       });
@@ -39,14 +34,24 @@ const modal = () => {
     screenWidth = document.documentElement.clientWidth;
     screenHeight = document.documentElement.clientHeight;
 
-    inputElement.style.left = "0px";
-    inputElement.style.top = screenHeight / 2 - 191 + "px";
     if (screenWidth >= 768) {
+      inputElement.style.left = "0px";
+      inputElement.style.top = screenHeight / 2 - 191 + "px";
       modal.style.display = "block";
       animation();
     } else {
       modal.style.display = "block";
+      inputElement.style.top = screenHeight / 2 - 191 + "px";
     }
   };
+
+  modal.addEventListener("click", (e) => {
+    if (
+      !e.target.closest(".popup-content") ||
+      e.target.classList.contains("popup-close")
+    ) {
+      modal.style.display = "none";
+    }
+  });
 };
 export default modal;

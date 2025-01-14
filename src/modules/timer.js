@@ -23,11 +23,15 @@ const timer = (deadline) => {
       timerMinutes.textContent = getTime.minutes.toString().padStart(2, "0");
       timerSeconds.textContent = getTime.seconds.toString().padStart(2, "0");
     } else {
-      console.log("Остановите");
       clearInterval(idInterval);
     }
   };
-  idInterval = setInterval(updateClock, 1000);
+  const start = () => {
+    updateClock();
+    idInterval = setInterval(updateClock, 1000);
+  };
+
+  start();
 };
 
 export default timer;
