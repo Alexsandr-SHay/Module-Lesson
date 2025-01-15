@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "swiper": "^11.2.1"
+  },
   "description": "",
   "devDependencies": {
     "webpack": "^5.97.1",
