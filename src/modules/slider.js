@@ -1,11 +1,17 @@
 const slider = () => {
   const sliderBlock = document.querySelector(".portfolio-content");
   const slides = document.querySelectorAll(".portfolio-item");
-  const dots = document.querySelectorAll(".dot");
+  const dots = document.querySelector(".portfolio-dots").querySelectorAll("li");
   const timeInterval = 2000;
 
   let currentSlide = 0;
   let interval;
+
+  const dotsCreateClass = (className) => {
+    dots.forEach((e) => {
+      e.classList.add(className);
+    });
+  };
 
   const prevSlide = (elems, index, strClass) => {
     elems[index].classList.remove(strClass);
@@ -33,6 +39,8 @@ const slider = () => {
   const stopSlide = () => {
     clearInterval(interval);
   };
+
+  dotsCreateClass("dot");
 
   sliderBlock.addEventListener("click", (e) => {
     e.preventDefault();
@@ -87,21 +95,6 @@ const slider = () => {
   );
 
   startSlide(timeInterval);
-
-  const ulValue = document
-    .querySelector(".portfolio-dots")
-    .querySelectorAll("li");
-
-  console.log(ulValue);
-
-  const hhhh = () => {
-    ulValue.forEach((e) => {
-      e.classList.add("guru");
-      console.log(e.classList.contains("guru"));
-    });
-  };
-  hhhh();
-  console.log(document.querySelectorAll(".guru"));
 };
 
 export default slider;
