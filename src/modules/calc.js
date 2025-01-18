@@ -1,3 +1,5 @@
+import { animate } from "./helpers";
+
 const calc = (price = 100) => {
   const calcBlock = document.querySelector(".calc-block");
   const calcType = document.querySelector(".calc-type");
@@ -5,20 +7,6 @@ const calc = (price = 100) => {
   const calcCount = document.querySelector(".calc-count");
   const calcDay = document.querySelector(".calc-day");
   const total = document.getElementById("total");
-  let timer;
-  let count = 0;
-
-  const numberCount = (totalValue) => {
-    count++;
-    if (count > totalValue) {
-      clearTimeout(timer);
-    } else {
-      total.textContent = count;
-      timer = setTimeout(() => {
-        numberCount(totalValue);
-      }, 1);
-    }
-  };
 
   const countCalc = () => {
     const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
@@ -46,7 +34,15 @@ const calc = (price = 100) => {
     }
 
     if (calcSquare.value) {
-      numberCount(totalValue);
+      animate({
+        duration: 1000,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          total.textContent = Math.trunc(totalValue * progress);
+        },
+      });
     } else {
       total.textContent = totalValue;
     }
