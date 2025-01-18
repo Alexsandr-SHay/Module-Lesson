@@ -11,20 +11,12 @@ menu();
 modal();
 dataEntryForm();
 tabs();
-slider();
-sliderCarousel(
-  //".portfolio-cont",
+slider(
+  ".portfolio-content",
   ".portfolio-item",
   ".portfolio-dots",
   "portfolio-item-active",
   "dot-active",
   ".dot, .portfolio-btn"
 );
-// sliderCarousel(
-//     ".portfolio-content",
-//     ".portfolio-item",
-//     ".portfolio-dots",
-//     "portfolio-item-active",
-//     "dot-active",
-//     ".dot, .portfolio-btn"
-//   );
+sliderCarousel();
