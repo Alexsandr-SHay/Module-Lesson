@@ -8,9 +8,6 @@ const modal = () => {
   let requestId;
   let valueElement = 0;
 
-  console.log(inputElement);
-  console.dir(inputElement);
-
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       animatuonElement();
