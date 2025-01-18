@@ -1,17 +1,10 @@
 import Swiper from "swiper";
-import { Navigation } from "swiper/modules";
 
 const sliderCarousel = () => {
   const swiper = new Swiper(".swiper", {
-    modules: [Navigation],
     loop: true,
-
     slidesPerView: 1,
     spaceBetween: 10,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
 
     breakpoints: {
       640: {
