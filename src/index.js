@@ -5,6 +5,7 @@ import dataEntryForm from "./modules/dataEntryForm";
 import tabs from "./modules/tabs";
 import slider from "./modules/slider";
 import sliderCarousel from "./modules/sliderCarousel";
+import calc from "./modules/calc";
 
 timer("27 january 2025");
 menu();
@@ -20,3 +21,4 @@ slider(
   ".dot, .portfolio-btn"
 );
 sliderCarousel();
+calc();
