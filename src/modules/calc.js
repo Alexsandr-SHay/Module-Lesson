@@ -1,5 +1,5 @@
 const calc = () => {
-  console.log("Прива");
+  //console.log("Прива");
 };
 
 export default calc;
