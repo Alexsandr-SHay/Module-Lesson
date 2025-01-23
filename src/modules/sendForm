@@ -32,8 +32,8 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formData = new FormData(form);
     const formBody = {};
 
-    statusBlock.textContent = loadText;
-    //statusBlock.classList.add(".sk-rotating-plane");
+    statusBlock.textContent = "";
+    statusBlock.classList.add("sk-plane");
     form.append(statusBlock);
 
     formData.forEach((val, key) => {
@@ -56,11 +56,13 @@ const sendForm = ({ formId, someElem = [] }) => {
       sendData(formBody)
         .then((data) => {
           statusBlock.textContent = successText;
+          statusBlock.classList.remove("sk-plane");
           formElements.forEach((input) => {
             input.value = "";
           });
         })
         .catch((error) => {
+          statusBlock.classList.remove("sk-plane");
           statusBlock.textContent = errorText;
         });
     } else alert("Данные не валидны");
