@@ -5,18 +5,18 @@ const timer = (deadline) => {
   let idInterval;
 
   const getTimeRemaning = () => {
-    let dateStop = new Date(deadline).getTime();
-    let dateNow = new Date().getTime();
-    let timeRemaning = (dateStop - dateNow) / 1000;
-    let hours = Math.floor(timeRemaning / 60 / 60);
-    let minutes = Math.floor((timeRemaning / 60) % 60);
-    let seconds = Math.floor(timeRemaning % 60);
+    const dateStop = new Date(deadline).getTime();
+    const dateNow = new Date().getTime();
+    const timeRemaning = (dateStop - dateNow) / 1000;
+    const hours = Math.floor(timeRemaning / 60 / 60);
+    const minutes = Math.floor((timeRemaning / 60) % 60);
+    const seconds = Math.floor(timeRemaning % 60);
 
     return { timeRemaning, hours, minutes, seconds };
   };
 
   const updateClock = () => {
-    let getTime = getTimeRemaning();
+    const getTime = getTimeRemaning();
 
     if (getTime.timeRemaning > 0) {
       timerHourse.textContent = getTime.hours.toString().padStart(2, "0");
